@@ -1,15 +1,12 @@
 ﻿using GithubRepositoryStats.Infrastructure;
-using GithubRepositoryStats.Models;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 
 namespace GithubRepositoryStats
 {
@@ -32,17 +29,46 @@ namespace GithubRepositoryStats
             await GithubHelper.RefreshInfoAsync();
         }
 
-        private void repoOwner_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        void Sync()
         {
-            Helper.OpenIfNotNull(GithubHelper.Data.Repository?.owner?.html_url);
+            if (repoData != null && GithubHelper.Data.Repository != null)
+            {
+                textMessage.Text = GithubHelper.Data.Message;
+                repoData.Visibility = GithubHelper.Data.IsSuccess ? Visibility.Visible : Visibility.Hidden;
+                if (GithubHelper.Data.IsSuccess)
+                {
+                    SetData(repoOwner, GithubHelper.Data.Repository.owner.login, GithubHelper.Data.Repository?.owner?.html_url);
+                    SetData(repoName, GithubHelper.Data.Repository.name, GithubHelper.Data.Repository?.html_url);
+                    SetData(repoWatching, GithubHelper.Data.Repository.subscribers_count.ToString(), GithubHelper.Data.Repository?.html_url?.AddIfNotNull("/watchers"));
+                    SetData(repoStars, GithubHelper.Data.Repository.stargazers_count.ToString(), GithubHelper.Data.Repository?.html_url?.AddIfNotNull("/stargazers"));
+                    SetData(repoForks, GithubHelper.Data.Repository.forks_count.ToString(), GithubHelper.Data.Repository?.html_url?.AddIfNotNull("/forks"));
+                    SetData(repoVisibility, GithubHelper.Data.Repository.visibility);
+                    SetData(repoLanguage, GithubHelper.Data.Repository.language);
+                    SetData(repoLicense, GithubHelper.Data.Repository.license?.name ?? "None");
+                }
+            }
+
+        }
+        void SetData(Span element, string text, string url = null)
+        {
+            if (url is not null && element is Hyperlink hyperlink)
+                hyperlink.NavigateUri = new Uri(url);
+
+            element.Inlines.Clear();
+            element.Inlines.Add(new Run(text));
+
+            ToolTip toolTip = new ToolTip();
+            toolTip.Content = url ?? text;
+            element.ToolTip = toolTip;
         }
 
-        private void repoName_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+
+        private void baseRequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
-            Helper.OpenIfNotNull(GithubHelper.Data.Repository?.html_url);
+            Helper.OpenIfNotNull(sender, e);
         }
 
-        private async void repoLanguage_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private async void repoLanguage_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -58,7 +84,7 @@ namespace GithubRepositoryStats
 
                     if (repoOwner != null && GithubHelper.Data.Repository != null)
                     {
-                        repoLanguage.Content = $"Language: {string.Join(" , ", model.Select(p => p.Key))}";
+                        SetData(repoLanguage, string.Join(" , ", model.Select(p => p.Key)));
                     }
                 }
             }
@@ -66,41 +92,5 @@ namespace GithubRepositoryStats
             {
             }
         }
-
-        private void repoForks_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            Helper.OpenIfNotNull(GithubHelper.Data.Repository?.html_url?.AddIfNotNull("/forks"));
-        }
-
-        private void repoWatching_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            Helper.OpenIfNotNull(GithubHelper.Data.Repository?.html_url?.AddIfNotNull("/watchers"));
-        }
-
-        private void repoStars_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            Helper.OpenIfNotNull(GithubHelper.Data.Repository?.html_url?.AddIfNotNull("/stargazers"));
-        }
-
-        void Sync()
-        {
-            if (repoOwner != null && GithubHelper.Data.Repository != null)
-            {
-                textMessage.Text = GithubHelper.Data.Message;
-                repoData.Visibility = GithubHelper.Data.IsSuccess ? Visibility.Visible : Visibility.Hidden;
-                if (GithubHelper.Data.IsSuccess)
-                {
-                    repoName.Content = $"Name: {GithubHelper.Data.Repository.name}";
-                    repoOwner.Content = $"Owner: {GithubHelper.Data.Repository.owner.login}";
-                    repoStars.Content = $"Stars: {GithubHelper.Data.Repository.stargazers_count}";
-                    repoForks.Content = $"Forks: {GithubHelper.Data.Repository.forks_count}";
-                    repoWatching.Content = $"Watching: {GithubHelper.Data.Repository.watchers_count}";
-                    repoVisibility.Content = $"Visibility: {GithubHelper.Data.Repository.visibility}";
-                    repoLanguage.Content = $"Language: {GithubHelper.Data.Repository.language}";
-                    repoLicense.Content = $"License: {GithubHelper.Data.Repository.license?.name ?? "None"}";
-                }
-            }
-        }
-
     }
 }

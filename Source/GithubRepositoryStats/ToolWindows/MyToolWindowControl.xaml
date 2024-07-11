@@ -53,66 +53,80 @@
                     Margin="5">
                 </TextBlock>
 
-                <StackPanel x:Name="repoData" Visibility="Hidden">
-                    <Label x:Name="repoOwner" 
-                        Content="Owner: "
-                        Foreground="gray"
-                        Cursor="Hand"
-                        FontWeight="Bold"
-                        MouseDoubleClick="repoOwner_MouseDoubleClick"
-                        Margin="5"/>
+                <StackPanel x:Name="repoData" Visibility="Visible">
+                    
+                    <Label Foreground="gray" FontWeight="Bold" Margin="5">
+                        <Label.Content>
+                            <Span>
+                                <Span>Owner: </Span>
+                                <Hyperlink x:Name="repoOwner" RequestNavigate="baseRequestNavigate"/>
+                            </Span>
+                        </Label.Content>
+                    </Label>
 
-                    <Label x:Name="repoName" 
-                        Cursor="Hand"
-                        Content="Name: "
-                        Foreground="gray"
-                        MouseDoubleClick="repoName_MouseDoubleClick"
-                        FontWeight="Bold"
-                        Margin="5"/>
+                    <Label Foreground="gray" FontWeight="Bold" Margin="5">
+                        <Label.Content>
+                            <Span>
+                                <Span>Name: </Span>
+                                <Hyperlink x:Name="repoName" RequestNavigate="baseRequestNavigate" />
+                            </Span>
+                        </Label.Content>
+                    </Label>
 
-                    <Label x:Name="repoLanguage" 
-                        Cursor="Hand"
-                        Content="Language: "
-                        Foreground="gray"
-                        MouseDoubleClick="repoLanguage_MouseDoubleClick"
-                        FontWeight="Bold"
-                        Margin="5"/>
+                    <Label Foreground="gray" FontWeight="Bold" Margin="5">
+                        <Label.Content>
+                            <Span>
+                                <Span>Language: </Span>
+                                <Hyperlink x:Name="repoLanguage" Click="repoLanguage_Click"/> 
+                            </Span>
+                        </Label.Content>
+                    </Label>
+                    
+                    <Label Foreground="gray" FontWeight="Bold" Margin="5">
+                        <Label.Content>
+                            <Span>
+                                <Span>Forks: </Span>
+                                <Hyperlink x:Name="repoForks" RequestNavigate="baseRequestNavigate"/>
+                            </Span>
+                        </Label.Content>
+                    </Label>
+                    
+                    <Label Foreground="gray" FontWeight="Bold" Margin="5">
+                        <Label.Content>
+                            <Span>
+                                <Span>Stars: </Span>
+                                <Hyperlink x:Name="repoStars" RequestNavigate="baseRequestNavigate"/>
+                            </Span>
+                        </Label.Content>
+                    </Label>
+                    
+                    <Label Foreground="gray" FontWeight="Bold" Margin="5">
+                        <Label.Content>
+                            <Span>
+                                <Span>Watching: </Span>
+                                <Hyperlink x:Name="repoWatching" RequestNavigate="baseRequestNavigate"/>
+                            </Span>
+                        </Label.Content>
+                    </Label>
+                    
+                    <Label Foreground="gray" FontWeight="Bold" Margin="5">
+                        <Label.Content>
+                            <Span>
+                                <Span>Visibility:</Span>
+                                <Span x:Name="repoVisibility"/>
+                            </Span>
+                        </Label.Content>
+                    </Label>
 
-                    <Label x:Name="repoVisibility" 
-                        Content="Visibility: "
-                        Foreground="gray"
-                        FontWeight="Bold"
-                        Margin="5"/>
+                    <Label Foreground="gray" FontWeight="Bold" Margin="5">
+                        <Label.Content>
+                            <Span>
+                                <Span>Visibility:</Span>
+                                <Span x:Name="repoLicense"/>
+                            </Span>
+                        </Label.Content>
+                    </Label>
 
-                    <Label x:Name="repoForks" 
-                        Content="Forks: "
-                        Cursor="Hand"
-                        Foreground="gray"
-                        MouseDoubleClick="repoForks_MouseDoubleClick"
-                        FontWeight="Bold"
-                        Margin="5"/>
-
-                    <Label x:Name="repoStars" 
-                        Content="Stars: "
-                        Cursor="Hand"
-                        Foreground="gray"
-                        MouseDoubleClick="repoStars_MouseDoubleClick"
-                        FontWeight="Bold"
-                        Margin="5"/>
-
-                    <Label x:Name="repoWatching" 
-                        Content="Watching: "
-                        Foreground="gray"
-                        MouseDoubleClick="repoWatching_MouseDoubleClick"
-                        Cursor="Hand"
-                        FontWeight="Bold"
-                        Margin="5"/>
-
-                    <Label x:Name="repoLicense" 
-                        Content="License: "
-                        Foreground="gray"
-                        FontWeight="Bold"
-                        Margin="5"/>
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>

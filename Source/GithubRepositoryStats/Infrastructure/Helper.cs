@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Windows.Navigation;
 
 namespace GithubRepositoryStats.Infrastructure
 {
@@ -10,23 +11,15 @@ namespace GithubRepositoryStats.Infrastructure
 
             return url + value;
         }
-        public static void OpenIfNotNull(string url)
+        public static void OpenIfNotNull(object sender, RequestNavigateEventArgs e)
         {
-            if (!string.IsNullOrEmpty(url))
-            {
                 try
                 {
-                    Process.Start(new ProcessStartInfo
-                    {
-                        FileName = url,
-                        UseShellExecute = true
-                    });
+                    Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri) { UseShellExecute = true });
                 }
                 catch
                 {
                 }
-            }
-
         }
 
     }
