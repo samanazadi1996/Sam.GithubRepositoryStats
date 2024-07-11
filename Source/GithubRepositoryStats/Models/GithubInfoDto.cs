@@ -4,7 +4,8 @@ namespace GithubRepositoryStats.Models
 {
     public class GithubInfoDto
     {
-        public bool IsSuccess{ get; set; }
+        public bool IsSuccess { get; set; }
+        public string Message { get; set; }
         public Repository Repository { get; set; }
 
     }

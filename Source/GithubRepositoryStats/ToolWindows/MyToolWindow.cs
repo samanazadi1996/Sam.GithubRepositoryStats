@@ -8,7 +8,7 @@ namespace GithubRepositoryStats
 {
     public class MyToolWindow : BaseToolWindow<MyToolWindow>
     {
-        public override string GetTitle(int toolWindowId) => "My Tool Window";
+        public override string GetTitle(int toolWindowId) => "Github Repository Stats";
 
         public override Type PaneType => typeof(Pane);
 

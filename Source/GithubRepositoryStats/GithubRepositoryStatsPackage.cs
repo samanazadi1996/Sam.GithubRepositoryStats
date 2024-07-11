@@ -2,6 +2,8 @@
 global using Microsoft.VisualStudio.Shell;
 global using System;
 global using Task = System.Threading.Tasks.Task;
+using GithubRepositoryStats.Infrastructure;
+using Microsoft.VisualStudio.Shell.Interop;
 using System.Runtime.InteropServices;
 using System.Threading;
 
@@ -19,6 +21,12 @@ namespace GithubRepositoryStats
             await this.RegisterCommandsAsync();
 
             this.RegisterToolWindows();
+
+            // Add your initialization code here
+            await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+            var solutionService = await GetServiceAsync(typeof(SVsSolution)) as IVsSolution;
+            new SolutionEventsHandler(solutionService);
+
         }
     }
 }
