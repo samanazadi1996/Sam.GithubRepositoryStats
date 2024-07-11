@@ -16,7 +16,11 @@
     d:DesignWidth="300"
     x:Name="GithubRepositoryStats">
     <Grid>
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="99*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2">
             <StackPanel Orientation="Vertical">
 
                 <Border BorderThickness="0,0,0,2" BorderBrush="gray" Padding="5">
@@ -24,24 +28,12 @@
 
 
                         <Button
-                            Background="gray"
-                            Foreground="Black"
                             Click="refreshButton_Click"
                             x:Name="refreshButton" 
                             Content="Refresh" 
                             Margin="2 0"
-                            Padding="2"
-                            BorderBrush="Black"/>
+                            Padding="2"/>
 
-                        <!--<Button        
-                            Background="gray"
-                            Foreground="Black"
-                            Click="refreshButton_Click"
-                            Padding="2"
-                            Content="info" 
-                            Margin="2 0"
-                            BorderBrush="Black"/>-->
-                
                     </StackPanel>
                 </Border>
 
@@ -50,66 +42,65 @@
                     Foreground="Gray"
                     FontWeight="Bold"
                     Background="Transparent"
-                    Margin="5">
-                </TextBlock>
+                    Margin="5"/>
 
                 <StackPanel x:Name="repoData" Visibility="Visible">
-                    
-                    <Label Foreground="gray" FontWeight="Bold" Margin="5">
+
+                    <Label FontWeight="Bold" Margin="5">
                         <Label.Content>
                             <Span>
-                                <Span>Owner: </Span>
+                                <Span>Owner:</Span>
                                 <Hyperlink x:Name="repoOwner" RequestNavigate="baseRequestNavigate"/>
                             </Span>
                         </Label.Content>
                     </Label>
 
-                    <Label Foreground="gray" FontWeight="Bold" Margin="5">
+                    <Label FontWeight="Bold" Margin="5">
                         <Label.Content>
                             <Span>
-                                <Span>Name: </Span>
+                                <Span>Name:</Span>
                                 <Hyperlink x:Name="repoName" RequestNavigate="baseRequestNavigate" />
                             </Span>
                         </Label.Content>
                     </Label>
 
-                    <Label Foreground="gray" FontWeight="Bold" Margin="5">
+                    <Label FontWeight="Bold" Margin="5">
                         <Label.Content>
                             <Span>
-                                <Span>Language: </Span>
-                                <Hyperlink x:Name="repoLanguage" Click="repoLanguage_Click"/> 
+                                <Span>Language:</Span>
+                                <Hyperlink x:Name="repoLanguage" Click="repoLanguage_Click"/>
                             </Span>
                         </Label.Content>
                     </Label>
-                    
-                    <Label Foreground="gray" FontWeight="Bold" Margin="5">
+
+                    <Label FontWeight="Bold" Margin="5">
                         <Label.Content>
                             <Span>
-                                <Span>Forks: </Span>
+                                <Span>Forks:</Span>
                                 <Hyperlink x:Name="repoForks" RequestNavigate="baseRequestNavigate"/>
                             </Span>
                         </Label.Content>
                     </Label>
-                    
-                    <Label Foreground="gray" FontWeight="Bold" Margin="5">
+
+                    <Label FontWeight="Bold" Margin="5">
                         <Label.Content>
                             <Span>
-                                <Span>Stars: </Span>
+                                <Span>Stars:</Span>
                                 <Hyperlink x:Name="repoStars" RequestNavigate="baseRequestNavigate"/>
                             </Span>
                         </Label.Content>
                     </Label>
-                    
-                    <Label Foreground="gray" FontWeight="Bold" Margin="5">
+
+                    <Label FontWeight="Bold" Margin="5">
                         <Label.Content>
                             <Span>
-                                <Span>Watching: </Span>
+                                <Span>Watching:</Span>
                                 <Hyperlink x:Name="repoWatching" RequestNavigate="baseRequestNavigate"/>
                             </Span>
                         </Label.Content>
                     </Label>
-                    
-                    <Label Foreground="gray" FontWeight="Bold" Margin="5">
+
+                    <Label FontWeight="Bold" Margin="5">
                         <Label.Content>
                             <Span>
                                 <Span>Visibility:</Span>
@@ -118,7 +109,7 @@
                         </Label.Content>
                     </Label>
 
-                    <Label Foreground="gray" FontWeight="Bold" Margin="5">
+                    <Label FontWeight="Bold" Margin="5">
                         <Label.Content>
                             <Span>
                                 <Span>Visibility:</Span>

@@ -17,6 +17,7 @@ namespace GithubRepositoryStats
         {
             InitializeComponent();
             GithubHelper.StaticDataChanged += StaticDataChanged;
+            repoData.Visibility = Visibility.Hidden;
         }
 
         private void StaticDataChanged(object sender, PropertyChangedEventArgs e)
@@ -34,9 +35,9 @@ namespace GithubRepositoryStats
             if (repoData != null && GithubHelper.Data.Repository != null)
             {
                 textMessage.Text = GithubHelper.Data.Message;
-                repoData.Visibility = GithubHelper.Data.IsSuccess ? Visibility.Visible : Visibility.Hidden;
                 if (GithubHelper.Data.IsSuccess)
                 {
+                    repoData.Visibility = Visibility.Visible;
                     SetData(repoOwner, GithubHelper.Data.Repository.owner.login, GithubHelper.Data.Repository?.owner?.html_url);
                     SetData(repoName, GithubHelper.Data.Repository.name, GithubHelper.Data.Repository?.html_url);
                     SetData(repoWatching, GithubHelper.Data.Repository.subscribers_count.ToString(), GithubHelper.Data.Repository?.html_url?.AddIfNotNull("/watchers"));
@@ -45,6 +46,10 @@ namespace GithubRepositoryStats
                     SetData(repoVisibility, GithubHelper.Data.Repository.visibility);
                     SetData(repoLanguage, GithubHelper.Data.Repository.language);
                     SetData(repoLicense, GithubHelper.Data.Repository.license?.name ?? "None");
+                }
+                else
+                {
+                    repoData.Visibility = Visibility.Hidden;
                 }
             }
 
