@@ -54,9 +54,10 @@ namespace GithubRepositoryStats.Infrastructure
             }
             catch
             {
-                StaticDataChanged?.Invoke(null, new PropertyChangedEventArgs("Data"));
-
+                GithubHelper.Data.IsSuccess = false;
                 Data.Message = "An error occurred while fetching GitHub repository information.";
+
+                StaticDataChanged?.Invoke(null, new PropertyChangedEventArgs("Data"));
                 return false;
             }
 

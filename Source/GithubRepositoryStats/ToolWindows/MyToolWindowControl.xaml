@@ -99,7 +99,16 @@
                             </Span>
                         </Label.Content>
                     </Label>
-
+                    
+                    <Label FontWeight="Bold" Margin="5">
+                        <Label.Content>
+                            <Span>
+                                <Span>Open Issues:</Span>
+                                <Hyperlink x:Name="repoOpenIssues" RequestNavigate="baseRequestNavigate"/>
+                            </Span>
+                        </Label.Content>
+                    </Label>
+                    
                     <Label FontWeight="Bold" Margin="5">
                         <Label.Content>
                             <Span>

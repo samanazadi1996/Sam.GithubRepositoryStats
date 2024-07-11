@@ -42,6 +42,7 @@ namespace GithubRepositoryStats
                     SetData(repoName, GithubHelper.Data.Repository.name, GithubHelper.Data.Repository?.html_url);
                     SetData(repoWatching, GithubHelper.Data.Repository.subscribers_count.ToString(), GithubHelper.Data.Repository?.html_url?.AddIfNotNull("/watchers"));
                     SetData(repoStars, GithubHelper.Data.Repository.stargazers_count.ToString(), GithubHelper.Data.Repository?.html_url?.AddIfNotNull("/stargazers"));
+                    SetData(repoOpenIssues, GithubHelper.Data.Repository.open_issues_count.ToString(), GithubHelper.Data.Repository?.html_url?.AddIfNotNull("/issues"));
                     SetData(repoForks, GithubHelper.Data.Repository.forks_count.ToString(), GithubHelper.Data.Repository?.html_url?.AddIfNotNull("/forks"));
                     SetData(repoVisibility, GithubHelper.Data.Repository.visibility);
                     SetData(repoLanguage, GithubHelper.Data.Repository.language);
