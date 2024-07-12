@@ -15,9 +15,11 @@ The "GithubRepositoryStats" extension for Visual Studio helps developers easily 
 
 1. Open Visual Studio: Launch Visual Studio and load a project that is connected to a GitHub repository.
 
-2. Open the Extension Tool Window: From the "View" menu, go to "Other Windows" and select "GithubRepositoryStats." The extension tool window will open.
+2. Open the Extension Tool Window: From the "View" menu, go to "Other Windows" and select "GithubRepositoryStats." The extension tool window will open. `View >> Other Windows >>  Github Repository Stats`
 
 3. Refreshing Repository Information: In the tool window, click the "Refresh" button to update the information for your GitHub repository. The extension will automatically connect to the repository, fetch the relevant information from GitHub, and display it.
+
+    [![](./Documents/Images/Window.png)](#)
 
 ### Benefits of Using the "GithubRepositoryStats" Extension
 

@@ -15,7 +15,7 @@ namespace GithubRepositoryStats.Infrastructure
 
         public int OnAfterOpenSolution(object pUnkReserved, int fNewSolution)
         {
-            GithubHelper.RefreshInfoAsync().Wait();
+            GithubHelper.RefreshInfoAsync();
             return VSConstants.S_OK;
         }
 
