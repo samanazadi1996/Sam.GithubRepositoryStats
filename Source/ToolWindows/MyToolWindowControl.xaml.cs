@@ -57,14 +57,14 @@ namespace GithubRepositoryStats
             Helper.OpenIfNotNull(sender, e);
         }
 
-        private async void repoLanguage_Click(object sender, RoutedEventArgs e)
+        private void repoLanguage_Click(object sender, RoutedEventArgs e)
         {
-            await GithubHelper.GetLanguagesAsync();
+            GithubHelper.GetLanguagesAsync();
         }
 
-        private async void RefreshButton_Click(object sender, RoutedEventArgs e)
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
-            await GithubHelper.RefreshInfoAsync();
+            GithubHelper.RefreshInfoAsync();
         }
     }
 }

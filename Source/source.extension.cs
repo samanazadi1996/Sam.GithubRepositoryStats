@@ -9,12 +9,10 @@ namespace GithubRepositoryStats
     {
         public const string Id = "GithubRepositoryStats.9ad7b95a-52c7-4a5c-9c72-af6c9c28ab29";
         public const string Name = "Github Repository Stats";
-        public const string Description = @"The 'Github Repository Stats' extension for Visual Studio helps developers easily view information about their GitHub repositories directly within the Visual Studio environment.
-
-";
+        public const string Description = @"The 'Github Repository Stats' extension for Visual Studio helps developers easily view information about their GitHub repositories directly within the Visual Studio environment.";
         public const string Language = "en-US";
         public const string Version = "1.0";
-        public const string Author = "saman azadi";
+        public const string Author = "samanazadi1996";
         public const string Tags = "github,github-tools";
     }
 }
