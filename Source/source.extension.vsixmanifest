@@ -3,9 +3,7 @@
     <Metadata>
         <Identity Id="GithubRepositoryStats.9ad7b95a-52c7-4a5c-9c72-af6c9c28ab29" Version="1.0" Language="en-US" Publisher="samanazadi1996" />
         <DisplayName>Github Repository Stats</DisplayName>
-        <Description xml:space="preserve">The "Github Repository Stats" extension for Visual Studio helps developers easily view information about their GitHub repositories directly within the Visual Studio environment.
-
-</Description>
+        <Description xml:space="preserve">The 'Github Repository Stats' extension for Visual Studio helps developers easily view information about their GitHub repositories directly within the Visual Studio environment.</Description>
         <MoreInfo>https://github.com/samanazadi1996/Sam.GithubRepositoryStats</MoreInfo>
         <Icon>Resources\Icon.png</Icon>
         <PreviewImage>Resources\Icon.png</PreviewImage>
